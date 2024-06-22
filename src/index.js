@@ -4,7 +4,6 @@ import {
   runHashmapReadBenchmark,
   runHashmapUpdateBenchmark,
 } from './speed/hashmaps/index.js'
-import { runExternalObjectLookupBenchmarks } from './speed/loops/external-object-lookup/index.js'
 import { runSideEffectBenchmarks } from './speed/loops/side-effect/index.js'
 import { runTransformDataBenchmarks } from './speed/loops/transform-data/index.js'
 
