@@ -9,13 +9,18 @@ import {
 import { runSideEffectBenchmarks } from './loops/side-effect/index.js'
 import { runTransformDataBenchmarks } from './loops/transform-data/index.js'
 
-// runTransformDataBenchmarks(10000, 500)
-// runSideEffectBenchmarks(10000, 500)
+const separator = '\n================================================\n'
 
-// runHashmapCreationBenchmark(10000, 10000)
-// runHashmapReadBenchmark(10000, 10000)
-// runHashmapUpdateBenchmark(10000, 10000)
-// runHashmapDeleteBenchmark(10000, 10000)
+runTransformDataBenchmarks(10000, 1000)
+runSideEffectBenchmarks(10000, 1000)
 
-// runArrayToArrayBenchmark(100000, 10000)
+console.log(separator)
+runHashmapCreationBenchmark(10000, 10000)
+runHashmapReadBenchmark(10000, 10000)
+runHashmapUpdateBenchmark(10000, 10000)
+runHashmapDeleteBenchmark(10000, 10000)
+
+console.log(separator)
+
+runArrayToArrayBenchmark(100000, 10000)
 runSetToArrayBenchmark(100000, 10000)
