@@ -1,4 +1,4 @@
-import { getTiming } from '../../utils/index.js'
+import { getTiming } from '../utils/index.js'
 
 /**
  *

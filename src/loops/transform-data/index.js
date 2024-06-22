@@ -1,4 +1,4 @@
-import { squareEvenAndCubeOdd } from '../../../utils/transform.js'
+import { squareEvenAndCubeOdd } from '../../utils/transform.js'
 import { runIterations } from '../utils.js'
 
 /**
