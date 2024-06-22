@@ -7,10 +7,6 @@ import { getTiming } from '../utils/index.js'
  * @returns {BenchmarkResult} The results of the benchmark
  */
 export function runIterations(numIterations, fn, setupFn) {
-  if (setupFn !== undefined) {
-    setupFn()
-  }
-
   /** @type {number[]} */
   const timings = []
 
@@ -18,6 +14,9 @@ export function runIterations(numIterations, fn, setupFn) {
   let total = 0
 
   for (let i = 0; i < numIterations; i++) {
+    if (setupFn !== undefined) {
+      setupFn()
+    }
     const timing = getTiming(() => fn())
     timings.push(timing)
     total += timing
