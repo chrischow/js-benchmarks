@@ -11,10 +11,10 @@ Converting arrays with 10,000 items to arrays, 100,000 times:
 
 | Conversion Method | Median Processing Time |
 | :---------------- | :--------------------: |
-| Spread operator   | **0.0018330**          |
+| Spread operator   | **0.0026540**          |
 | Normal for loop   | 0.023979               |
 | `Array.map`       | 0.0068080              |
-| `Array.from`      | 0.0026100              |
+| `Array.from`      | 0.0026670              |
 | Deep copy         | 0.14076                |
 
 ## Set-to-Array

@@ -6,7 +6,7 @@ import { runIterations } from './utils.js'
  * @param {number} arraySize Size of array
  */
 export function runSetToArrayBenchmark(numIterations, arraySize) {
-  console.log(`\n[ ARRAY-TO-ARRAY BENCHMARK ]`)
+  console.log(`\n[ SET-TO-ARRAY BENCHMARK ]`)
   console.log(`${numIterations} iterations`)
   console.log(`${arraySize} array size`)
 
