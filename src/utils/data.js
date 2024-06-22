@@ -10,3 +10,11 @@ export function generateIntegerArray(n) {
   }
   return data
 }
+
+export function generateSet(n) {
+  const output = new Set()
+  for (let i = 0; i < n; i++) {
+    output.add(i)
+  }
+  return output
+}

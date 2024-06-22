@@ -1,4 +1,5 @@
 import { runArrayToArrayBenchmark } from './array-conversion/array-to-array/index.js'
+import { runSetToArrayBenchmark } from './array-conversion/set-to-array/index.js'
 import {
   runHashmapCreationBenchmark,
   runHashmapDeleteBenchmark,
@@ -16,4 +17,5 @@ import { runTransformDataBenchmarks } from './loops/transform-data/index.js'
 // runHashmapUpdateBenchmark(10000, 10000)
 // runHashmapDeleteBenchmark(10000, 10000)
 
-runArrayToArrayBenchmark(100000, 10000)
+// runArrayToArrayBenchmark(100000, 10000)
+runSetToArrayBenchmark(100000, 10000)
