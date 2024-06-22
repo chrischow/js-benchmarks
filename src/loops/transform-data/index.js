@@ -57,4 +57,19 @@ export function runTransformDataBenchmarks(numIterations, arraySize) {
   console.log(`\nMap:`)
   console.log(`- Mean: ${mapResult.mean}`)
   console.log(`- Median: ${mapResult.median}`)
+
+  // While loop
+  const whileLoopResult = runIterations(numIterations, arraySize, (data) => {
+    let i = 0
+    const output = []
+    while (i < arraySize) {
+      output.push(squareEvenAndCubeOdd(data[i]))
+      i++
+    }
+    return output
+  })
+
+  console.log(`\nWhile loop:`)
+  console.log(`- Mean: ${whileLoopResult.mean}`)
+  console.log(`- Median: ${whileLoopResult.median}`)
 }
