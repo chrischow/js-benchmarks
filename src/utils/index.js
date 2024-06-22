@@ -1,3 +1,3 @@
-export * from './benchmark'
-export * from './data'
-export * from './transform'
+export * from './benchmark.js'
+export * from './data.js'
+export * from './transform.js'

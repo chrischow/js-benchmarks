@@ -1,11 +1,13 @@
 {
   "name": "js-benchmarks",
+  "type": "module",
   "version": "1.0.0",
   "description": "A collection of benchmarks for figuring out what is performant in JS.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "start": "node ./src/index.js"
   },
   "author": "",
   "license": "ISC",
