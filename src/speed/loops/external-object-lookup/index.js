@@ -1,5 +1,5 @@
 import { squareEvenAndCubeOdd } from '../../../utils/transform.js'
-import { runIterations } from '../../utils.js'
+import { runIterations } from '../utils.js'
 
 /**
  * Runs benchmarks for the different types of loops

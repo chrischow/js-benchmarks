@@ -1,4 +1,4 @@
-import { generateIntegerArray, getTiming } from '../utils/index.js'
+import { generateIntegerArray, getTiming } from '../../utils/index.js'
 
 /**
  *
