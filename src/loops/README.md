@@ -17,8 +17,8 @@ We processed arrays containing 1,000 items, 10,000 iterations each. The median p
 
 | Loop Type  | Transform Data | Side Effect  |
 | :--------- | :------------: | :----------: |
-| `forEach`  | 0.028649       | 0.031764     |
+| `forEach`  | 0.028649       | **0.031764** |
 | `for`      | 0.022197       | 0.033651     |
 | `for...of` | 0.023066       | 0.034199     |
 | `map`      | **0.017576**   | 0.035945     |
-| `while`    | 0.022830       | **0.032234** |
+| `while`    | 0.022830       | 0.032234     |
