@@ -48,34 +48,60 @@ export function runHashmapReadBenchmark(numIterations, lookupSize) {
   console.log(`${lookupSize} lookup size`)
 
   // Create lookups
-  const lookupObject = {}
-  const lookupMap = new Map()
-  for (let i = 0; i < lookupSize; i++) {
-    lookupObject[i] = true
-    lookupMap.set(i, true)
+  let lookupObject = {}
+  let lookupMap = new Map()
+  let lookupObjectKeys = []
+  let lookupMapKeys = []
+  resetObject()
+  resetMap()
+
+  function resetObject() {
+    lookupObject = {}
+    for (let i = 0; i < lookupSize; i++) {
+      const key = `${Math.random()}`
+      lookupObject[key] = true
+    }
+    lookupObjectKeys = Object.keys(lookupObject)
+  }
+
+  function resetMap() {
+    lookupMap = new Map()
+    for (let i = 0; i < lookupSize; i++) {
+      const key = `${Math.random()}`
+      lookupMap.set(key, true)
+    }
+    lookupMapKeys = Array.from(lookupMap.keys())
   }
 
   // Object lookup
-  const objectReadResult = runIterations(numIterations, () => {
-    const output = []
-    for (let i = 0; i < lookupSize; i++) {
-      output.push(lookupObject[i])
-    }
-    return output
-  })
+  const objectReadResult = runIterations(
+    numIterations,
+    () => {
+      const output = []
+      for (const key of lookupObjectKeys) {
+        output.push(lookupObject[key])
+      }
+      return output
+    },
+    resetObject,
+  )
 
   console.log(`\nObject lookup:`)
   console.log(`- Mean: ${objectReadResult.mean}`)
   console.log(`- Median: ${objectReadResult.median}`)
 
   // Map lookup
-  const mapReadResult = runIterations(numIterations, () => {
-    const output = new Map()
-    for (let i = 0; i < lookupSize; i++) {
-      output.set(i, true)
-    }
-    return output
-  })
+  const mapReadResult = runIterations(
+    numIterations,
+    () => {
+      const output = []
+      for (const key of lookupMapKeys) {
+        output.push(lookupMap.get(key))
+      }
+      return output
+    },
+    resetMap,
+  )
 
   console.log(`\nMap lookup:`)
   console.log(`- Mean: ${mapReadResult.mean}`)
@@ -93,38 +119,64 @@ export function runHashmapUpdateBenchmark(numIterations, lookupSize) {
   console.log(`${lookupSize} lookup size`)
 
   // Create lookups
-  const lookupObject = {}
-  const lookupMap = new Map()
-  for (let i = 0; i < lookupSize; i++) {
-    lookupObject[i] = true
-    lookupMap.set(i, true)
+  let lookupObject = {}
+  let lookupMap = new Map()
+  let lookupObjectKeys = []
+  let lookupMapKeys = []
+  resetObject()
+  resetMap()
+
+  function resetObject() {
+    lookupObject = {}
+    for (let i = 0; i < lookupSize; i++) {
+      const key = `${Math.random()}`
+      lookupObject[key] = true
+    }
+    lookupObjectKeys = Object.keys(lookupObject)
+  }
+
+  function resetMap() {
+    lookupMap = new Map()
+    for (let i = 0; i < lookupSize; i++) {
+      const key = `${Math.random()}`
+      lookupMap.set(key, true)
+    }
+    lookupMapKeys = Array.from(lookupMap.keys())
   }
 
   // Object update
-  const objectUpdateResult = runIterations(numIterations, () => {
-    for (let i = 0; i < lookupSize; i++) {
-      if (lookupObject[i] === true) {
-        lookupObject[i] = 1
-      } else {
-        lookupObject[i] = true
+  const objectUpdateResult = runIterations(
+    numIterations,
+    () => {
+      for (const key of lookupObjectKeys) {
+        if (lookupObject[key] === true) {
+          lookupObject[key] = 1
+        } else {
+          lookupObject[key] = true
+        }
       }
-    }
-  })
+    },
+    resetObject,
+  )
 
   console.log(`\nObject update:`)
   console.log(`- Mean: ${objectUpdateResult.mean}`)
   console.log(`- Median: ${objectUpdateResult.median}`)
 
   // Map update
-  const mapUpdateResult = runIterations(numIterations, () => {
-    for (let i = 0; i < lookupSize; i++) {
-      if (lookupMap.get(i) === true) {
-        lookupMap.set(i, 1)
-      } else {
-        lookupMap.set(i, true)
+  const mapUpdateResult = runIterations(
+    numIterations,
+    () => {
+      for (const key of lookupMapKeys) {
+        if (lookupMap.get(key) === true) {
+          lookupMap.set(key, 1)
+        } else {
+          lookupMap.set(key, true)
+        }
       }
-    }
-  })
+    },
+    resetMap,
+  )
 
   console.log(`\nMap update:`)
   console.log(`- Mean: ${mapUpdateResult.mean}`)
@@ -144,27 +196,35 @@ export function runHashmapDeleteBenchmark(numIterations, lookupSize) {
   // Create lookups
   let lookupObject = {}
   let lookupMap = new Map()
+  let lookupObjectKeys = []
+  let lookupMapKeys = []
+  resetObject()
+  resetMap()
 
   function resetObject() {
     lookupObject = {}
     for (let i = 0; i < lookupSize; i++) {
-      lookupObject[i] = true
+      const key = `${Math.random()}`
+      lookupObject[key] = true
     }
+    lookupObjectKeys = Object.keys(lookupObject)
   }
 
   function resetMap() {
     lookupMap = new Map()
     for (let i = 0; i < lookupSize; i++) {
-      lookupMap.set(i, true)
+      const key = `${Math.random()}`
+      lookupMap.set(key, true)
     }
+    lookupMapKeys = lookupMap.keys()
   }
 
   // Object delete
   const objectDeleteResult = runIterations(
     numIterations,
     () => {
-      for (let i = 0; i < lookupSize; i++) {
-        delete lookupObject[i]
+      for (const key of lookupObjectKeys) {
+        delete lookupObject[key]
       }
     },
     resetObject,
@@ -178,8 +238,8 @@ export function runHashmapDeleteBenchmark(numIterations, lookupSize) {
   const mapDeleteResult = runIterations(
     numIterations,
     () => {
-      for (let i = 0; i < lookupSize; i++) {
-        lookupMap.delete(i)
+      for (const key of lookupMapKeys) {
+        lookupMap.delete(key)
       }
     },
     resetMap,

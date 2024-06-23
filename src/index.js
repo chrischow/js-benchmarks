@@ -11,16 +11,17 @@ import { runTransformDataBenchmarks } from './loops/transform-data/index.js'
 
 const separator = '\n================================================\n'
 
-runTransformDataBenchmarks(10000, 1000)
-runSideEffectBenchmarks(10000, 1000)
+// runTransformDataBenchmarks(10000, 1000)
+// runSideEffectBenchmarks(10000, 1000)
 
-console.log(separator)
+// console.log(separator)
+
 runHashmapCreationBenchmark(10000, 10000)
 runHashmapReadBenchmark(10000, 10000)
 runHashmapUpdateBenchmark(10000, 10000)
 runHashmapDeleteBenchmark(10000, 10000)
 
-console.log(separator)
+// console.log(separator)
 
-runArrayToArrayBenchmark(100000, 10000)
-runSetToArrayBenchmark(100000, 10000)
+// runArrayToArrayBenchmark(100000, 10000)
+// runSetToArrayBenchmark(100000, 10000)
